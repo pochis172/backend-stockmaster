@@ -1,0 +1,13 @@
+import { IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
+
+export class ActualizarCategoriaDto {
+  @IsOptional()
+  @IsString()
+  @MinLength(2)
+  @MaxLength(100)
+  nombre?: string;
+
+  @IsOptional()
+  @IsString()
+  descripcion?: string;
+}

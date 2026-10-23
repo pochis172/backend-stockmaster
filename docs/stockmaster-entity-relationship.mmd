@@ -1,0 +1,41 @@
+erDiagram
+    ROL ||--o{ USUARIO : asigna
+    CATEGORIA ||--o{ PRODUCTO : clasifica
+    PRODUCTO ||--o{ MOVIMIENTO : registra
+    USUARIO ||--o{ MOVIMIENTO : responsable
+
+    ROL {
+        int id PK
+        varchar nombre UK
+    }
+    USUARIO {
+        int id PK
+        varchar nombre
+        varchar correo UK
+        varchar password
+        int rol_id FK
+        datetime fechaCreacion
+    }
+    CATEGORIA {
+        int id PK
+        varchar nombre UK
+        text descripcion
+    }
+    PRODUCTO {
+        int id PK
+        varchar nombre
+        text descripcion
+        decimal precio
+        int stock_actual
+        int categoria_id FK
+        datetime fechaCreacion
+        datetime fechaActualizacion
+    }
+    MOVIMIENTO {
+        int id PK
+        enum tipo
+        int cantidad
+        datetime fecha
+        int producto_id FK
+        int usuario_id FK
+    }
